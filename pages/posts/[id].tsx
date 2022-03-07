@@ -15,7 +15,7 @@ const Posts: NextPage<{ post: any }> = ({ post }) => {
       {post.description && <div className="card-text text-muted" dangerouslySetInnerHTML={{
         __html: post.description
       }} />}
-      <div className="mb-4">
+      {post.href && <div className="mb-4">
         <a
           className="hover:shadow-lg hover:none"
           href={post.href}
@@ -25,7 +25,7 @@ const Posts: NextPage<{ post: any }> = ({ post }) => {
             Ver no Youtube →
           </span>
         </a>
-      </div>
+      </div>}
     </Layout>
   );
 }

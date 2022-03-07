@@ -40,13 +40,15 @@ export async function getPosts() {
     const rows = response.data.values;
 
     if (rows?.length) {
-      return rows.map((row, index) => ({
+      return rows.slice(1, rows.length).map((row, index) => ({
         id: index,
         slug: slugify(row[0]),
         title: row[0],
         description: marked(row[1].replace(/\n/g, "<br />"), { renderer }),
         href: row[2] || null,
         videoUrl: row[3] || null,
+        mainImg: row[4] || null,
+        isHighlighted: !!row[5],
       }));
     }
   } catch (err) {

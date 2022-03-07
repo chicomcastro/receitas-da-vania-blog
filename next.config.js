@@ -4,6 +4,9 @@ const nextConfig = {
   experimental: {
     outputStandalone: true,
   },
+  images: {
+    domains: ['th.bing.com'],
+  },
 }
 
 module.exports = nextConfig

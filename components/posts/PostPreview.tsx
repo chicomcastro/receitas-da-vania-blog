@@ -9,7 +9,7 @@ interface Props {
     title: string;
     description?: string;
     date: string;
-    image: string;
+    mainImg: string;
     slug: string;
   };
 }
@@ -29,25 +29,25 @@ const PostPreview: FC<Props> = ({ type = "normal", post }) => {
     <div className="card my-3" style={{ height: '100%' }}>
       {type === "horizontal" && (
         <div className="row g-0 flex-row-reverse">
-          {post.image && (
+          {post.mainImg && (
             <div className="col-12 col-lg-6 d-flex">
               <Image
-                src={post.image}
+                src={post.mainImg}
                 height={heights[type]}
                 width={widths[type]}
                 alt={post.title}
               />
             </div>
           )}
-          <div className={`col-12 col-lg-${post.image ? 6 : 12} d-flex`}>
+          <div className={`col-12 col-lg-${post.mainImg ? 6 : 12} d-flex`}>
             <Card post={post} />
           </div>
         </div>
       )}
       {type === "normal" && (
         <div className="card" style={{ height: '100%' }}>
-          {post.image && <Image
-            src={post.image}
+          {post.mainImg && <Image
+            src={post.mainImg}
             height={heights[type]}
             width={widths[type]}
             alt={post.title}
