@@ -30,12 +30,12 @@ const PostPreview: FC<Props> = ({ type = "normal", post }) => {
       {type === "horizontal" && (
         <div className="row g-0 flex-row-reverse">
           <div className="col-12 col-lg-6 d-flex">
-            <Image
+            {post.image && <Image
               src={post.image}
               height={heights[type]}
               width={widths[type]}
               alt={post.title}
-            />
+            />}
           </div>
           <div className="col-12 col-lg-6 d-flex">
             <Card post={post} />
@@ -44,12 +44,12 @@ const PostPreview: FC<Props> = ({ type = "normal", post }) => {
       )}
       {type === "normal" && (
         <div className="card">
-          <Image
+          {post.image && <Image
             src={post.image}
             height={heights[type]}
-            width={heights[type]}
+            width={widths[type]}
             alt={post.title}
-          />
+          />}
           <Card post={post} />
         </div>
       )}
@@ -58,13 +58,14 @@ const PostPreview: FC<Props> = ({ type = "normal", post }) => {
 };
 
 const Card: FC<Props> = ({ post }) => {
+  const maxDescriptionLength = 150;
   return (
     <div className="card-body p-4 d-flex flex-column justify-content-between">
       <h5 className="card-title">{post.title}</h5>
-      <p className="card-text text-muted">
-        {(post.description?.slice(0, 200) || "") +
-          (post.description && post.description?.length > 200 ? "..." : "")}
-      </p>
+      {post.description && <div className="card-text text-muted" dangerouslySetInnerHTML={{
+        __html: (post.description?.slice(0, maxDescriptionLength) || "") +
+          (post.description && post.description?.length > maxDescriptionLength ? "..." : "")
+      }} />}
       <div className="d-flex justify-content-between align-items-center align-middle">
         <p className="card-text my-auto">
           <small className="text-muted">{post.date}</small>
