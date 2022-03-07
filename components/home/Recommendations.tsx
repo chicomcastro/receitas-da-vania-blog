@@ -13,12 +13,6 @@ const Recommendations: FC<{ posts: any[] }> = ({ posts }) => {
             </div>
           )
         })}
-        {/* <div className="col-12 col-md-6 col-lg-4">
-          <PostPreview post={posts[0]} />
-        </div>
-        <div className="col-12 col-md-12 col-lg-4">
-          <PostPreview post={posts[0]} />
-        </div> */}
       </div>
     </div>
   );

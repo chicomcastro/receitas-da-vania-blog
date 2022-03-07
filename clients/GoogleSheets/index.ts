@@ -7,6 +7,21 @@ renderer.link = (href, title, text) =>
     title || ""
   }">${text}</a>`;
 
+function slugify(str: string) {
+  if (!str) {
+    return;
+  }
+  return str
+    .toString()
+    .trim()
+    .toLowerCase()
+    .replace(/\s+/g, "-")
+    .replace(/[^\w\-]+/g, "")
+    .replace(/\-\-+/g, "-")
+    .replace(/^-+/, "")
+    .replace(/-+$/, "");
+}
+
 export async function getPosts() {
   try {
     const scopes = ["https://www.googleapis.com/auth/spreadsheets.readonly"];
@@ -25,7 +40,9 @@ export async function getPosts() {
     const rows = response.data.values;
 
     if (rows?.length) {
-      return rows.map((row) => ({
+      return rows.map((row, index) => ({
+        id: index,
+        slug: slugify(row[0]),
         title: row[0],
         description: marked(row[1].replace(/\n/g, "<br />"), { renderer }),
         href: row[2] || null,
