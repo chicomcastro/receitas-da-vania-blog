@@ -46,6 +46,7 @@ export async function getPosts() {
         title: row[0],
         description: marked(row[1].replace(/\n/g, "<br />"), { renderer }),
         href: row[2] || null,
+        videoUrl: row[3] || null,
       }));
     }
   } catch (err) {

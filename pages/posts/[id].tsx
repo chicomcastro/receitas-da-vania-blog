@@ -2,10 +2,30 @@ import { NextPage } from "next";
 import { getPosts } from "../../clients/GoogleSheets";
 import Layout from "../../components/Layout";
 
-const Posts: NextPage = () => {
+const Posts: NextPage<{ post: any }> = ({ post }) => {
   return (
     <Layout>
-      Posts
+      {post.videoUrl &&
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <iframe width="560" height="315" src={post.videoUrl} title={post.title} frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+        </div>}
+      <div className="mt-4 mb-2">
+        {post.title}
+      </div>
+      {post.description && <div className="card-text text-muted" dangerouslySetInnerHTML={{
+        __html: post.description
+      }} />}
+      <div className="mb-4">
+        <a
+          className="hover:shadow-lg hover:none"
+          href={post.href}
+          target="_blank" rel="noreferrer"
+        >
+          <span className="text-blue-600 hover:text-blue-400 hover:underline mt-4 block">
+            Ver no Youtube →
+          </span>
+        </a>
+      </div>
     </Layout>
   );
 }

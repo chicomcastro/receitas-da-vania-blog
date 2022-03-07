@@ -61,13 +61,11 @@ const PostPreview: FC<Props> = ({ type = "normal", post }) => {
 };
 
 const Card: FC<Props> = ({ post }) => {
-  const maxDescriptionLength = 150;
   return (
     <div className="card-body p-4 d-flex flex-column justify-content-between">
       <h5 className="card-title">{post.title}</h5>
       {post.description && <div className="card-text text-muted" dangerouslySetInnerHTML={{
-        __html: (post.description?.slice(0, maxDescriptionLength) || "") +
-          (post.description && post.description?.length > maxDescriptionLength ? "..." : "")
+        __html: post.description
       }} />}
       <div className="d-flex justify-content-between align-items-center align-middle">
         <p className="card-text my-auto">
