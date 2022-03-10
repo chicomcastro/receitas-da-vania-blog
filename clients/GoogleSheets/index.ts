@@ -41,7 +41,7 @@ export async function getPosts() {
 
     if (rows?.length) {
       return rows.slice(1, rows.length).map((row, index) => {
-        const [title, description, videoUrl, isHighlighted] = row;
+        const [title, shortDescription, description, videoUrl, isHighlighted] = row;
         const videoId = videoUrl.split("?v=").pop();
         const embedUrl = `https://www.youtube.com/embed/${videoId}`;
         const imgSrc = `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`;
@@ -50,6 +50,7 @@ export async function getPosts() {
           id: videoId,
           slug: slugify(title),
           title,
+          shortDescription,
           description: marked(description.replace(/\n/g, "<br />"), {
             renderer,
           }),
