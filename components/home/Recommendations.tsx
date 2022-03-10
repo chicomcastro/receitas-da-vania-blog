@@ -3,7 +3,7 @@ import PostPreview from "../posts/PostPreview";
 
 const Recommendations: FC<{ posts: any[] }> = ({ posts }) => {
   const highlightedPost = posts.find(post => post.isHighlighted);
-  const regularPosts = posts.filter(post => !post.highlightedPost);
+  const regularPosts = posts.filter(post => !post.isHighlighted);
   return (
     <div>
       {highlightedPost && <PostPreview type="horizontal" post={highlightedPost} />}
