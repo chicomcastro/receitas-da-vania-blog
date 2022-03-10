@@ -1,13 +1,12 @@
 import Image from "next/image";
 import { FC } from "react";
 import Link from "next/link";
-import Posts from "../../pages/posts";
 
 interface Props {
   type?: "horizontal" | "normal" | "cover";
   post: {
     title: string;
-    description?: string;
+    shortDescription?: string;
     date: string;
     imgSrc: string;
     slug: string;
@@ -64,15 +63,15 @@ const Card: FC<Props> = ({ post }) => {
   return (
     <div className="card-body p-4 d-flex flex-column justify-content-between">
       <h5 className="card-title">{post.title}</h5>
-      {post.description && <div className="card-text text-muted" dangerouslySetInnerHTML={{
-        __html: post.description
+      {post.shortDescription && <div className="card-text text-muted" dangerouslySetInnerHTML={{
+        __html: post.shortDescription
       }} />}
       <div className="d-flex justify-content-between align-items-center align-middle">
         <p className="card-text my-auto">
           <small className="text-muted">{post.date}</small>
         </p>
         <Link href={`/posts/${post.slug}`} passHref>
-          <a className="text-dark fw-bold text-decoration-none">Read more</a>
+          <a className="text-dark fw-bold text-decoration-none">Ver mais</a>
         </Link>
       </div>
     </div>
