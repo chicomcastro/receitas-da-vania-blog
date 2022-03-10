@@ -10,9 +10,10 @@ interface Props {
 const Layout: FC<Props> = ({ children, seo }) => {
   return (
     <div className="container">
-        <SEO {...seo }/>
-        <Navbar />
-        {children}
+      <SEO {...seo} />
+      <Navbar />
+      <div style={{ marginBottom: 80 }} />
+      {children}
     </div>
   );
 };
