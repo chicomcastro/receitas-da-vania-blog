@@ -16,8 +16,6 @@ const Home: NextPage<{ recommendedPosts: any[] }> = ({ recommendedPosts = [] }) 
 
 export async function getStaticProps(context: any) {
   const posts = await getPosts();
-  console.log(posts)
-
   return {
     props: {
       recommendedPosts: posts,
