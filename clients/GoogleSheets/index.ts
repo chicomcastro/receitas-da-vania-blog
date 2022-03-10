@@ -34,22 +34,31 @@ export async function getPosts() {
     const sheets = google.sheets({ version: "v4", auth: jwt });
     const response = await sheets.spreadsheets.values.get({
       spreadsheetId: process.env.SPREADSHEET_ID,
-      range: "Why Next.js?",
+      range: "Lista de vídeos",
     });
 
     const rows = response.data.values;
 
     if (rows?.length) {
-      return rows.slice(1, rows.length).map((row, index) => ({
-        id: index,
-        slug: slugify(row[0]),
-        title: row[0],
-        description: marked(row[1].replace(/\n/g, "<br />"), { renderer }),
-        href: row[2] || null,
-        videoUrl: row[3] || null,
-        mainImg: row[4] || null,
-        isHighlighted: !!row[5],
-      }));
+      return rows.slice(1, rows.length).map((row, index) => {
+        const [title, description, videoUrl, isHighlighted] = row;
+        const videoId = videoUrl.split("?v=").pop();
+        const embedUrl = `https://www.youtube.com/embed/${videoId}`;
+        const imgSrc = `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`;
+        return {
+          index,
+          id: videoId,
+          slug: slugify(title),
+          title,
+          description: marked(description.replace(/\n/g, "<br />"), {
+            renderer,
+          }),
+          videoUrl,
+          embedUrl,
+          imgSrc,
+          isHighlighted: !!isHighlighted,
+        };
+      });
     }
   } catch (err) {
     console.log(err);
