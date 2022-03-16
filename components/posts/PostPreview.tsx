@@ -1,16 +1,11 @@
 import Image from "next/image";
 import { FC } from "react";
 import Link from "next/link";
+import { Post } from "../../clients/GoogleSheets";
 
 interface Props {
   type?: "horizontal" | "normal" | "cover";
-  post: {
-    title: string;
-    shortDescription?: string;
-    date: string;
-    imgSrc: string;
-    slug: string;
-  };
+  post: Post;
 }
 
 const PostPreview: FC<Props> = ({ type = "normal", post }) => {
@@ -67,9 +62,6 @@ const Card: FC<Props> = ({ post }) => {
         __html: post.shortDescription
       }} />}
       <div className="d-flex justify-content-between align-items-center align-middle">
-        <p className="card-text my-auto">
-          <small className="text-muted">{post.date}</small>
-        </p>
         <Link href={`/posts/${post.slug}`} passHref>
           <a className="text-dark fw-bold text-decoration-none">Ver mais</a>
         </Link>
