@@ -22,6 +22,19 @@ function slugify(str: string) {
     .replace(/-+$/, "");
 }
 
+export interface Post {
+  index: number;
+  id: string;
+  slug: string | undefined;
+  title: string;
+  shortDescription: string;
+  description: string;
+  videoUrl: string;
+  embedUrl: string;
+  imgSrc: string;
+  isHighlighted: boolean;
+}
+
 export async function getPosts() {
   try {
     const scopes = ["https://www.googleapis.com/auth/spreadsheets.readonly"];
@@ -59,7 +72,7 @@ export async function getPosts() {
           imgSrc,
           isHighlighted: !!isHighlighted,
         };
-      });
+      }) as Post[];
     }
   } catch (err) {
     console.log(err);
