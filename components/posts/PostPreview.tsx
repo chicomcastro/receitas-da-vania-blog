@@ -61,9 +61,9 @@ const Card: FC<Props> = ({ post }) => {
       {post.shortDescription && <div className="card-text text-muted" dangerouslySetInnerHTML={{
         __html: post.shortDescription
       }} />}
-      <div className="d-flex justify-content-between align-items-center align-middle">
+      <div className="d-flex justify-content-end align-items-center align-middle mt-3">
         <Link href={`/posts/${post.slug}`} passHref>
-          <a className="text-dark fw-bold text-decoration-none">Ver mais</a>
+          <a className="fw-bold text-decoration-none" style={{color: "#ff6863"}}>Ver mais</a>
         </Link>
       </div>
     </div>
