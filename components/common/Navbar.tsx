@@ -3,19 +3,15 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import {
   AiFillInstagram,
-  AiFillLinkedin,
   AiFillYoutube,
-  AiOutlineSearch,
-  AiOutlineTwitter,
 } from "react-icons/ai";
-import styles from "../../styles/Navbar.module.css";
 
 const Navbar: FC = () => {
   const { pathname } = useRouter();
 
   return (
     <nav
-      className="navbar navbar-expand navbar-light justify-content-between"
+      className="navbar navbar-expand navbar-light justify-content-between flex-column flex-md-row"
       style={{
         position: "fixed",
         top: 0,
@@ -26,15 +22,15 @@ const Navbar: FC = () => {
       }}
     >
       {/* Brand */}
-      <div className="col mx-3">
+      <div className="col mx-3 mt-1 mt-md-0">
         <Link href="/" passHref>
           <a className="navbar-brand" style={{fontWeight: "500"}}>Receitas da Vânia</a>
         </Link>
       </div>
 
       {/* Navigation */}
-      <div className="col d-none d-md-flex justify-content-end">
-        <ul className="navbar-nav mb-lg-0 justify-content-between">
+      <div className="col d-md-flex justify-content-end">
+        <ul className="navbar-nav mb-lg-0 mt-1 mt-md-0 justify-content-between">
           <li className="nav-item mx-2">
             <Link href="/" passHref>
               <a className={"nav-link " + (pathname === "/" && "active")}>
@@ -49,7 +45,8 @@ const Navbar: FC = () => {
                   "nav-link text-nowrap " + (pathname === "/posts" && "active")
                 }
               >
-                Todas as receitas
+                <span className="d-none d-md-flex">Todas as receitas</span>
+                <span className="d-flex d-md-none">Receitas</span>
               </a>
             </Link>
           </li>
@@ -64,14 +61,14 @@ const Navbar: FC = () => {
               </a>
             </Link>
           </li>
-          <li className="nav-item mx-2">
+          <li className="nav-item mx-2 d-none d-md-flex">
             <Link href="https://www.youtube.com/channel/UCGr0EyuvQ5HHFy56oN1kc9A" passHref>
               <a className="nav-link" target="_blank">
                 <AiFillYoutube />
               </a>
             </Link>
           </li>
-          <li className="nav-item mx-2">
+          <li className="nav-item mx-2 d-none d-md-flex">
             <Link href="https://www.instagram.com/receitas.da.vania/" passHref>
               <a className="nav-link" target="_blank">
                 <AiFillInstagram />
