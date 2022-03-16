@@ -4,7 +4,7 @@ import styles from "../../styles/Header.module.css";
 
 const Header: FC = () => {
   return (
-    <div className="row my-2 px-3">
+    <div className="row my-2 px-3 pt-3">
       <div
         className={
           "col-12 col-md-6 d-flex flex-column justify-content-center vertical-align-center " +
@@ -12,17 +12,16 @@ const Header: FC = () => {
         }
       >
         <h1 className="d-inline">
-          Take a
+          Dê uma pausa
           <Image
             className="mt-2"
             src="/assets/home-header-coffee.svg"
-            height={90}
-            width={90}
+            height={76}
+            width={76}
             alt=""
           />
-          break
         </h1>
-        <p className="text-muted">to read new posts</p>
+        <p className="text-muted mt-2 lh-base">para ver algumas receitas deliciosas</p>
       </div>
       <div className="col-12 col-md-6">
         <div>
