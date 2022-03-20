@@ -3,6 +3,9 @@ import { getPosts, Post } from "../../clients/GoogleSheets";
 import Layout from "../../components/Layout";
 
 const PostDetails: NextPage<{ post: Post }> = ({ post }) => {
+  if (post === undefined) {
+    return <Layout>Post not found</Layout>
+  }
   return (
     <Layout>
       {post.embedUrl &&
