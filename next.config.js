@@ -5,7 +5,7 @@ const nextConfig = {
     outputStandalone: true,
   },
   images: {
-    domains: ["i.ytimg.com"],
+    domains: ["i.ytimg.com", "th.bing.com"],
   },
 }
 

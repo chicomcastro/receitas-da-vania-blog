@@ -1,10 +1,9 @@
+import Image from "next/image";
 import { FC } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import {
-  AiFillInstagram,
-  AiFillYoutube,
-} from "react-icons/ai";
+import { AiFillInstagram, AiFillYoutube } from "react-icons/ai";
+import PinterestLogo from "../svgs/PinterestLogo";
 
 const Navbar: FC = () => {
   const { pathname } = useRouter();
@@ -18,13 +17,15 @@ const Navbar: FC = () => {
         left: 0,
         right: 0,
         zIndex: 1,
-        backgroundColor: "#f69b98"
+        backgroundColor: "#f69b98",
       }}
     >
       {/* Brand */}
       <div className="col mx-3 mt-1 mt-md-0">
         <Link href="/" passHref>
-          <a className="navbar-brand" style={{fontWeight: "500"}}>Receitas da Vânia</a>
+          <a className="navbar-brand" style={{ fontWeight: "500" }}>
+            Receitas da Vânia
+          </a>
         </Link>
       </div>
 
@@ -62,7 +63,10 @@ const Navbar: FC = () => {
             </Link>
           </li> */}
           <li className="nav-item mx-2 d-none d-md-flex">
-            <Link href="https://www.youtube.com/channel/UCGr0EyuvQ5HHFy56oN1kc9A" passHref>
+            <Link
+              href="https://www.youtube.com/channel/UCGr0EyuvQ5HHFy56oN1kc9A"
+              passHref
+            >
               <a className="nav-link" target="_blank">
                 <AiFillYoutube />
               </a>
@@ -72,6 +76,16 @@ const Navbar: FC = () => {
             <Link href="https://www.instagram.com/receitas.da.vania/" passHref>
               <a className="nav-link" target="_blank">
                 <AiFillInstagram />
+              </a>
+            </Link>
+          </li>
+          <li className="nav-item mx-2 d-none d-md-flex">
+            <Link
+              href="https://br.pinterest.com/receitasdavania/_created/"
+              passHref
+            >
+              <a className="nav-link" target="_blank">
+                <PinterestLogo />
               </a>
             </Link>
           </li>
