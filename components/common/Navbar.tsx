@@ -50,7 +50,7 @@ const Navbar: FC = () => {
               </a>
             </Link>
           </li>
-          <li className="nav-item mx-2">
+          {/* <li className="nav-item mx-2">
             <Link href="/about" passHref>
               <a
                 className={
@@ -60,7 +60,7 @@ const Navbar: FC = () => {
                 Quem sou eu
               </a>
             </Link>
-          </li>
+          </li> */}
           <li className="nav-item mx-2 d-none d-md-flex">
             <Link href="https://www.youtube.com/channel/UCGr0EyuvQ5HHFy56oN1kc9A" passHref>
               <a className="nav-link" target="_blank">
